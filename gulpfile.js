@@ -12,10 +12,10 @@ var config = {
   dist: './public/'
 };
 
-//actualizo paths y sources de sass
 var paths = {
   assets: "assets/",
   img: "img/**",
+  js: "js",
   html: "**/*.html",
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
@@ -26,39 +26,36 @@ var sources = {
   assets: config.source + paths.assets,
   img: config.source + paths.assets + paths.img,
   html: config.source + paths.html,
-  sass: paths.assets + paths.sass,
-  js: config.source + paths.js,
+  sass: config.source + paths.assets + paths.sass,
+  js: config.source + paths.assets +  paths.js,
   rootSass: config.source + paths.assets + paths.mainSass,
   rootJS: config.source + paths.assets + paths.mainJS
 };
 
-//tareas por separado
+//tareas independientes
 gulp.task('html', ()=> {
   gulp.src(sources.html)
-      .pipe(gulp.dest(config.dist));
+    .pipe(gulp.dest(config.dist));
 });
 
-//task img
 gulp.task('img', ()=> {
   gulp.src(sources.img)
-     .pipe(gulp.dest(config.dist + paths.assets + "img"));
+    .pipe(gulp.dest(config.dist + paths.assets + "img"));
 });
 
-//creando tarea sass
 gulp.task('sass', ()=> {
   gulp.src(sources.rootSass)
-      .pipe(sass({
-          outputStyle: "compressed"
-      }).on ("error", sass.logError))
-      .pipe(gulp.dest(config.dist + paths.assets + "css"));
+    .pipe(sass({
+      outputStyle: "compressed"
+    }).on ("error", sass.logError))
+    .pipe(gulp.dest(config.dist + paths.assets + "css"));
 });
 
-//creando tarea js
 gulp.task('js', ()=> {
   gulp.src(sources.rootJS)
-      .pipe(browserify())
-      .pipe(rename("bundle.js"))
-      .pipe(gulp.dest(config.dist + paths.assets + "js"));
+    .pipe(browserify())
+    .pipe(rename("bundle.js"))
+    .pipe(gulp.dest(config.dist + paths.assets + paths.js));
 });
 
 
@@ -83,8 +80,7 @@ gulp.task("img-watch", ["img"], function (done) {
   browserSync.reload();
   done();
 });
-//agregando tarea extra que realizará el watch del directorio src y ejecutará todas las tareas
-//de manera q compila toodo y actualiza
+
 
 gulp.task("serve", ()=> {
   browserSync.init({
@@ -93,8 +89,12 @@ gulp.task("serve", ()=> {
     }
   });
 
-  gulp.watch(sources.html, ["html-watch"]);
-  gulp.watch(sources.sass, ["sass-watch"]);
-  gulp.watch(sources.js, ["js-watch"]);
-  gulp.watch(sources.img, ["img-watch"]);
+
+    gulp.watch(sources.sass, ["sass-watch"]);
+    gulp.watch(sources.html, ["html-watch"]);
+    gulp.watch(sources.rootJS, ["js-watch"]);
+    gulp.watch(sources.img, ["img-watch"]);
+
+
+
 });
