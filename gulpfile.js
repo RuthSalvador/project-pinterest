@@ -14,12 +14,14 @@ var config = {
 
 var paths = {
   assets: "assets/",
+  html: "**/*.html",
   img: "img/**",
-  js: "js",
+  js: "js/",
+  components: "components/**",
+  utils: "utils/**",
   css: "css",
   fonts: "fonts/**",
   fontCss: "css/**",
-  html: "**/*.html",
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
   mainJS: "js/index.js"
@@ -27,12 +29,15 @@ var paths = {
 
 var sources = {
   assets: config.source + paths.assets,
+  html: config.source + paths.html,
   img: config.source + paths.assets + paths.img,
+  js: config.source + paths.assets +  paths.js,
+  components: config.source + paths.assets + paths.js + paths.components,
+  utils: config.source + paths.assets + paths.js + paths.utils,
+
   fonts: config.source + paths.assets + paths.fonts,
   fontCss: config.source + paths.assets + paths.fontCss,
-  html: config.source + paths.html,
   sass: config.source + paths.assets + paths.sass,
-  js: config.source + paths.assets +  paths.js,
   rootSass: config.source + paths.assets + paths.mainSass,
   rootJS: config.source + paths.assets + paths.mainJS
 };
@@ -46,6 +51,16 @@ gulp.task('html', ()=> {
 gulp.task('img', ()=> {
   gulp.src(sources.img)
     .pipe(gulp.dest(config.dist + paths.assets + "img"));
+});
+
+gulp.task('components', ()=> {
+  gulp.src(sources.components)
+      .pipe(gulp.dest(config.dist + paths.assets + paths.js + "components"));
+});
+
+gulp.task('utils', ()=> {
+  gulp.src(sources.utils)
+    .pipe(gulp.dest(config.dist + paths.assets + paths.js + "utils"));
 });
 
 gulp.task('fonts', ()=> {
@@ -75,22 +90,7 @@ gulp.task('js', ()=> {
 });
 
 //agregando tareas watch
-gulp.task("sass-watch", ["sass"], function (done) {
-  browserSync.reload();
-  done();
-});
-
-gulp.task("js-watch", ["js"], function (done) {
-  browserSync.reload();
-  done();
-});
-
 gulp.task("html-watch", ["html"], function (done) {
-  browserSync.reload();
-  done();
-});
-
-gulp.task("fonts-watch", ["fonts"], function (done) {
   browserSync.reload();
   done();
 });
@@ -100,6 +100,32 @@ gulp.task("img-watch", ["img"], function (done) {
   done();
 });
 
+gulp.task("js-watch", ["js"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("components-watch", ["components"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("utils-watch", ["utils"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("sass-watch", ["sass"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("fonts-watch", ["fonts"], function (done) {
+  browserSync.reload();
+  done();
+});
+
+
 gulp.task("serve", ()=> {
   browserSync.init({
     server: {
@@ -107,11 +133,12 @@ gulp.task("serve", ()=> {
     }
   });
 
-    gulp.watch(sources.sass, ["sass-watch"]);
-    gulp.watch(sources.html, ["html-watch"]);
-    gulp.watch(sources.fonts, ["fonts-watch"]);
-    gulp.watch(sources.rootJS, ["js-watch"]);
-    gulp.watch(sources.img, ["img-watch"]);
-
+  gulp.watch(sources.html, ["html-watch"]);
+  gulp.watch(sources.img, ["img-watch"]);
+  gulp.watch(sources.fonts, ["fonts-watch"]);
+  gulp.watch(sources.components, ["components-watch"]);
+  gulp.watch(sources.utils, ["utils-watch"]);
+  gulp.watch(sources.sass, ["sass-watch"]);
+  gulp.watch(sources.rootJS, ["js-watch"]);
 
 });
