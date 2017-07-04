@@ -1,0 +1,48 @@
+.flex {
+  display: flex;
+  &__column {
+    flex-direction: column;
+  }
+  &__center {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+$radius-borders: ('board': 8px, 'button': 100px, 'circle': 50%);
+
+@mixin border-block($name, $radio) {
+  .border {
+    &--#{$name} {
+      @if $name == 'button' {
+        padding: 12px 16px;
+      }
+      border-radius: $radio;
+    }
+  }
+}
+
+@each $name, $radius in $radius-borders {
+  @include border-block($name, $radius);
+}
+
+$size-profile: 168px;
+$size-secondary: 60px;
+
+.block {
+  width: 236px;
+  height: auto;
+  &__responsive {
+    width: 100%;
+    &--profile {
+      width: $size-profile;
+      height: $size-profile;
+    }
+    &--secondary {
+      width: $size-secondary;
+      height: $size-secondary;
+    }
+  }
+}
+
+

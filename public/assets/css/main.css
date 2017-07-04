@@ -1,1 +1,55 @@
-h1{color:pink}
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.cap-color {
+  background-color: #efefef;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex__column {
+  flex-direction: column;
+}
+
+.flex__center {
+  align-items: center;
+  justify-content: center;
+}
+
+.border--board {
+  border-radius: 8px;
+}
+
+.border--button {
+  padding: 12px 16px;
+  border-radius: 100px;
+}
+
+.border--circle {
+  border-radius: 50%;
+}
+
+.block {
+  width: 236px;
+  height: auto;
+}
+
+.block__responsive {
+  width: 100%;
+}
+
+.block__responsive--profile {
+  width: 168px;
+  height: 168px;
+}
+
+.block__responsive--secondary {
+  width: 60px;
+  height: 60px;
+}

@@ -43,11 +43,13 @@ gulp.task('img', ()=> {
     .pipe(gulp.dest(config.dist + paths.assets + "img"));
 });
 
+//compressed
 gulp.task('sass', ()=> {
   gulp.src(sources.rootSass)
     .pipe(sass({
-      outputStyle: "compressed"
-    }).on ("error", sass.logError))
+      outputStyle: "expanded"
+    })
+      .on ("error", sass.logError))
     .pipe(gulp.dest(config.dist + paths.assets + "css"));
 });
 
