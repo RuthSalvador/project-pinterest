@@ -16,6 +16,9 @@ var paths = {
   assets: "assets/",
   img: "img/**",
   js: "js",
+  css: "css",
+  fonts: "fonts/**",
+  fontCss: "css/**",
   html: "**/*.html",
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
@@ -25,6 +28,8 @@ var paths = {
 var sources = {
   assets: config.source + paths.assets,
   img: config.source + paths.assets + paths.img,
+  fonts: config.source + paths.assets + paths.fonts,
+  fontCss: config.source + paths.assets + paths.fontCss,
   html: config.source + paths.html,
   sass: config.source + paths.assets + paths.sass,
   js: config.source + paths.assets +  paths.js,
@@ -43,7 +48,16 @@ gulp.task('img', ()=> {
     .pipe(gulp.dest(config.dist + paths.assets + "img"));
 });
 
-//compressed
+gulp.task('fonts', ()=> {
+  gulp.src(sources.fonts)
+    .pipe(gulp.dest(config.dist + paths.assets + "fonts"));
+});
+
+gulp.task('fontCss', ()=> {
+  gulp.src(sources.fontCss)
+    .pipe(gulp.dest(config.dist + paths.assets + paths.css ));
+});
+
 gulp.task('sass', ()=> {
   gulp.src(sources.rootSass)
     .pipe(sass({
@@ -59,8 +73,6 @@ gulp.task('js', ()=> {
     .pipe(rename("bundle.js"))
     .pipe(gulp.dest(config.dist + paths.assets + paths.js));
 });
-
-
 
 //agregando tareas watch
 gulp.task("sass-watch", ["sass"], function (done) {
@@ -78,11 +90,15 @@ gulp.task("html-watch", ["html"], function (done) {
   done();
 });
 
-gulp.task("img-watch", ["img"], function (done) {
+gulp.task("fonts-watch", ["fonts"], function (done) {
   browserSync.reload();
   done();
 });
 
+gulp.task("img-watch", ["img"], function (done) {
+  browserSync.reload();
+  done();
+});
 
 gulp.task("serve", ()=> {
   browserSync.init({
@@ -91,12 +107,11 @@ gulp.task("serve", ()=> {
     }
   });
 
-
     gulp.watch(sources.sass, ["sass-watch"]);
     gulp.watch(sources.html, ["html-watch"]);
+    gulp.watch(sources.fonts, ["fonts-watch"]);
     gulp.watch(sources.rootJS, ["js-watch"]);
     gulp.watch(sources.img, ["img-watch"]);
-
 
 
 });

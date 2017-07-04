@@ -1,1 +1,0 @@
-console.log("funciono si me ves");
