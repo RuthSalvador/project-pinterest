@@ -1,0 +1,33 @@
+{
+  "name": "project-pinterest",
+  "version": "1.0.0",
+  "description": "Proyecto Pinterest para Laboratoria",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RuthSalvador/project-pinterest.git"
+  },
+  "keywords": [
+    "gulps",
+    "sass",
+    "JavaScript",
+    "npm"
+  ],
+  "author": "Ruth Salvador, Miriam Mendoza, Mitchell Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RuthSalvador/project-pinterest/issues"
+  },
+  "homepage": "https://github.com/RuthSalvador/project-pinterest#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0"
+  }
+}
