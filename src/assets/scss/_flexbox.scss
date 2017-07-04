@@ -45,4 +45,9 @@ $size-secondary: 60px;
   }
 }
 
+.padding {
+  &__box {
+    padding: 10px;
+  }
+}
 
