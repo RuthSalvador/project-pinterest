@@ -22,7 +22,7 @@ var paths = {
   html: "**/*.html",
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
-  mainJS: "js/app.js"
+  mainJS: "js/index.js"
 };
 
 var sources = {
