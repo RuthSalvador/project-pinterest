@@ -1,11 +1,15 @@
 .flex {
   display: flex;
+  overflow: hidden;
   &__column {
     flex-direction: column;
   }
   &__center {
     align-items: center;
     justify-content: center;
+  }
+  &__wrap {
+    flex-wrap: wrap;
   }
 }
 
@@ -30,8 +34,13 @@ $size-profile: 168px;
 $size-secondary: 60px;
 
 .block {
-  width: 236px;
+  width: 256px;
   height: auto;
+  margin: 0 auto;
+  &__pin{
+    width: 236px;
+    height: auto;
+  }
   &__responsive {
     width: 100%;
     &--profile {
@@ -50,4 +59,30 @@ $size-secondary: 60px;
     padding: 10px;
   }
 }
+
+.sub-header {
+  margin-top: 70px;
+  width: 100%;
+}
+
+@media (min-width:760px) {
+  .sub-header {
+    width: 760px;
+    padding: 10px;
+  }
+}
+
+/*
+@media (min-width:800px) and (max-width: 1311px){
+  .ancho {
+    width: 800px;
+  }
+}
+
+@media (min-width:1312px) and (max-width: 2000px){
+  .ancho {
+    width: 1312px;
+  }
+}
+*/
 

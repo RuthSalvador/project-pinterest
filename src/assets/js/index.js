@@ -8,7 +8,7 @@ const render = (root) => {
 		render(root);
 	};
 
-	wrapper.append(Header(update));
+	//wrapper.append(Header(update));
 	wrapper.append(Board(update));
 	root.append(wrapper);
 
@@ -45,4 +45,3 @@ $( _ => {
 	});
 
 });
-console.log("hola miriam adios");
