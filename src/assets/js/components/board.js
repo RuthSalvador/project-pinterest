@@ -1,7 +1,6 @@
 'use strict';
 
 const Board = (update) => {
-	console.log("hola miriam yaaaa");
 
 	const container = $('<div class="container"></div>');
 	let boardName = $('<p>'+state.board.name+'</p>');
@@ -23,7 +22,7 @@ const Board = (update) => {
 		const userContainer = $('<div></div>');
 		let userImage = $('<img src="'+state.userData.image["60x60"].url+'" alt="userImage">');
 		const userName = $('<p>'+state.boardData[i].creator.first_name+'</p>');
-		let boardName = $('<p>'+state.board.name+'</p>');	
+		let boardName = $('<p>'+state.board.name+'</p>');
 
 		pin.append(img);
 		pin.append(pinNote);

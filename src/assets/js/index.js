@@ -3,7 +3,7 @@ const render = (root) => {
 
 	root.empty();
 	const wrapper = $('<div class="wrapper"></div>');
-	
+
 	const update = function() {
 		render(root);
 	};
@@ -45,4 +45,3 @@ $( _ => {
 	});
 
 });
-console.log("hola miriam adios");
