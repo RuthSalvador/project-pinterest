@@ -1,4 +1,7 @@
 var gulp = require('gulp');
+
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 //agregando gulp-sass
 var sass = require('gulp-sass');
 //agregando dependecias
@@ -6,6 +9,7 @@ var browserify = require('gulp-browserify');
 var rename = require('gulp-rename');
 //agregando modulo requerido
 var browserSync = require('browser-sync').create();
+
 
 var config = {
   source: './src/',
@@ -16,15 +20,17 @@ var paths = {
   assets: "assets/",
   html: "**/*.html",
   img: "img/**",
-  js: "js/",
+  js:"js/*.js",
+
   components: "components/**",
   utils: "utils/**",
+
   css: "css",
   fonts: "fonts/**",
   fontCss: "css/**",
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
-  mainJS: "js/index.js"
+  mainJS:"js/**/*.js"
 };
 
 var sources = {
@@ -32,8 +38,7 @@ var sources = {
   html: config.source + paths.html,
   img: config.source + paths.assets + paths.img,
   js: config.source + paths.assets +  paths.js,
-  components: config.source + paths.assets + paths.js + paths.components,
-  utils: config.source + paths.assets + paths.js + paths.utils,
+  //js: paths.assets + paths.js,
 
   fonts: config.source + paths.assets + paths.fonts,
   fontCss: config.source + paths.assets + paths.fontCss,
@@ -51,16 +56,6 @@ gulp.task('html', ()=> {
 gulp.task('img', ()=> {
   gulp.src(sources.img)
     .pipe(gulp.dest(config.dist + paths.assets + "img"));
-});
-
-gulp.task('components', ()=> {
-  gulp.src(sources.components)
-      .pipe(gulp.dest(config.dist + paths.assets + paths.js + "components"));
-});
-
-gulp.task('utils', ()=> {
-  gulp.src(sources.utils)
-    .pipe(gulp.dest(config.dist + paths.assets + paths.js + "utils"));
 });
 
 gulp.task('fonts', ()=> {
@@ -84,9 +79,11 @@ gulp.task('sass', ()=> {
 
 gulp.task('js', ()=> {
   gulp.src(sources.rootJS)
-    .pipe(browserify())
-    .pipe(rename("bundle.js"))
-    .pipe(gulp.dest(config.dist + paths.assets + paths.js));
+    //.pipe(browserify())
+    .pipe(concat('bundle.js'))
+    //.pipe(rename("bundle.js"))
+    //.pipe(uglify())
+    .pipe(gulp.dest(config.dist + paths.assets + "js"));
 });
 
 //agregando tareas watch
@@ -105,16 +102,6 @@ gulp.task("js-watch", ["js"], function (done) {
   done();
 });
 
-gulp.task("components-watch", ["components"], function (done) {
-  browserSync.reload();
-  done();
-});
-
-gulp.task("utils-watch", ["utils"], function (done) {
-  browserSync.reload();
-  done();
-});
-
 gulp.task("sass-watch", ["sass"], function (done) {
   browserSync.reload();
   done();
@@ -124,7 +111,6 @@ gulp.task("fonts-watch", ["fonts"], function (done) {
   browserSync.reload();
   done();
 });
-
 
 gulp.task("serve", ()=> {
   browserSync.init({
@@ -136,8 +122,6 @@ gulp.task("serve", ()=> {
   gulp.watch(sources.html, ["html-watch"]);
   gulp.watch(sources.img, ["img-watch"]);
   gulp.watch(sources.fonts, ["fonts-watch"]);
-  gulp.watch(sources.components, ["components-watch"]);
-  gulp.watch(sources.utils, ["utils-watch"]);
   gulp.watch(sources.sass, ["sass-watch"]);
   gulp.watch(sources.rootJS, ["js-watch"]);
 

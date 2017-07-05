@@ -1,6 +1,7 @@
 'use strict';
 
 const Board = (update) => {
+	console.log("hola miriam yaaaa");
 
 	const container = $('<div class="container"></div>');
 	let boardName = $('<p>'+state.board.name+'</p>');
@@ -13,7 +14,7 @@ const Board = (update) => {
 	container.append(followers);
 	container.append(userImage);
 	let boardCount = state.boardData.length;
-	for(var i = 0; i < boardCount ; i++){
+	for(let i = 0; i < boardCount ; i++){
 
 		const boardContainer = $('<div class="board-container"></div>');
 		const pin = $('<div class="pin"></div>');
@@ -21,7 +22,7 @@ const Board = (update) => {
 		const pinNote = $('<h3 class="pin-name">'+state.boardData[i].note+'</h3>');
 		const userContainer = $('<div></div>');
 		let userImage = $('<img src="'+state.userData.image["60x60"].url+'" alt="userImage">');
-		const userName = $('<p>'+state.boardData[i].creator.first_name+'</p>')
+		const userName = $('<p>'+state.boardData[i].creator.first_name+'</p>');
 		let boardName = $('<p>'+state.board.name+'</p>');	
 
 		pin.append(img);
@@ -32,7 +33,7 @@ const Board = (update) => {
 		boardContainer.append(pin);
 		boardContainer.append(userContainer);
 		container.append(boardContainer);
-	};
+	}
 
 	return container
-}
+};

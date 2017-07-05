@@ -2,11 +2,12 @@
 
 const Header = (update) => {
 	const header = $('<header></header>');
-	const nav = $('<div class="container"></div>')
-	const title = $('<a href="#" class="title">Pinterest</a>');
+	const nav = $('<div class="container"></div>');
+	const title = $('<img src="assets/img/pinterest-logo.png" alt="">');
+
 
 	nav.append(title);
 	header.append(nav);
 
 	return header;
-}
+};
