@@ -3,12 +3,12 @@ const render = (root) => {
 
 	root.empty();
 	const wrapper = $('<div class="wrapper"></div>');
-	
+
 	const update = function() {
 		render(root);
 	};
 
-	//wrapper.append(Header(update));
+	wrapper.append(Header(update));
 	wrapper.append(Board(update));
 	root.append(wrapper);
 

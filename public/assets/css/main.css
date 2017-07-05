@@ -5,6 +5,45 @@
   padding: 0;
 }
 
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+header * {
+  display: inline-block;
+}
+
+header input {
+  position: absolute;
+  height: 100%;
+  border: none;
+  right: 0;
+  width: 97%;
+  background: rgba(255, 255, 255, 0);
+}
+
+@media (max-width: 760px) {
+  header input {
+    width: 90%;
+  }
+}
+
+header input:focus {
+  outline: none;
+}
+
+header input::placeholder {
+  color: #555555;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+header .fa-search {
+  font-size: 19px;
+  color: #b5b5b5;
+}
+
 .flex {
   display: flex;
   overflow: hidden;
@@ -16,7 +55,7 @@
 
 .flex__center {
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .flex__wrap {
@@ -48,7 +87,7 @@
 }
 
 .block__responsive {
-  width: 100%;
+  max-width: 100%;
 }
 
 .block__responsive--profile {
@@ -59,6 +98,45 @@
 .block__responsive--secondary {
   width: 60px;
   height: 60px;
+}
+
+.header {
+  width: 100%;
+  padding: 4px;
+  height: 70px;
+  position: fixed;
+  border-bottom: 1px solid #efefef;
+  background: #fff;
+}
+
+.header__boxLogo {
+  width: 48px;
+}
+
+.header__boxIcon--icons {
+  width: 28px;
+  cursor: pointer;
+  margin-right: 7px;
+  margin-left: 7px;
+  font-size: 27px;
+  color: #b5b5b5;
+}
+
+.header__boxInput {
+  width: 85%;
+  padding: 8px 14px;
+  height: 38px;
+  background: #efefef;
+}
+
+.header__boxInput--input {
+  position: relative;
+  width: 100%;
+}
+
+.header__boxInput--span {
+  position: absolute;
+  left: 14px;
 }
 
 .padding__block {
@@ -93,4 +171,8 @@
 .board-fixed {
   position: fixed;
   margin: auto;
+}
+
+.wrapper {
+  overflow: hidden;
 }

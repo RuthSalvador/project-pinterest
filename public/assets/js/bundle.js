@@ -3,12 +3,12 @@ const render = (root) => {
 
 	root.empty();
 	const wrapper = $('<div class="wrapper"></div>');
-	
+
 	const update = function() {
 		render(root);
 	};
 
-	//wrapper.append(Header(update));
+	wrapper.append(Header(update));
 	wrapper.append(Board(update));
 	root.append(wrapper);
 
@@ -84,7 +84,7 @@ const Board = (update) => {
 		const userContainer = $('<div></div>');
 		let userImage = $('<img class="border--circle" src="'+state.userData.image["60x60"].url+'" alt="userImage">');
 		const userName = $('<p>'+state.boardData[i].creator.first_name+'</p>');
-		let boardName = $('<p>'+state.board.name+'</p>');	
+		let boardName = $('<p>'+state.board.name+'</p>');
 
 		pin.append(img);
 		pin.append(pinNote);
@@ -99,19 +99,36 @@ const Board = (update) => {
 
 	return container
 };
+
 'use strict';
 
 const Header = (update) => {
-	const header = $('<header></header>');
-	const nav = $('<div class="container"></div>');
-	const title = $('<img src="assets/img/pinterest-logo.png" alt="">');
+	const header 		= $('<header class="header flex flex__center"></header>');
+	const boxLogo		= $('<div class="header__boxLogo"></div>');
+	const logo 			= $('<img src="assets/img/pinterest-logo.png" alt="logo pinterest" class="header__boxIcon--icons" >');
+	const boxInput 	= $('<div class="header__boxInput"></div>');
+	const boxInputSearch = $('<div class="header__boxInput--input"></div>');
+	const input 		= $('<input type="text" placeholder="Buscar" >');
+	const boxIcons = $('<div class="header__boxIcon flex flex__center"></div>');
+	const search 		= $('<span class="fa fa-search"></span>');
+	const perfil 		= $('<img src="assets/img/icon-profile.png" alt="logo pinterest" class="header__boxIcon--icons" >');
+	const option 		= $('<span class="fa fa-bars header__boxIcon--icons"></span>');
+	const message 	= $('<img src="assets/img/message.png" alt="logo pinterest" class="header__boxIcon--icons" >');
 
 
-	nav.append(title);
-	header.append(nav);
-
+	boxLogo.append(logo);
+	boxInputSearch.append(input);
+	boxInputSearch.append(search);
+	boxInput.append(boxInputSearch);
+	boxIcons.append(perfil);
+	boxIcons.append(option);
+	boxIcons.append(message);
+	header.append(boxLogo);
+	header.append(boxInput);
+	header.append(boxIcons);
 	return header;
 };
+
 'use strict';
 
 const getJSON = (url, cb) => {
