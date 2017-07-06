@@ -2,7 +2,7 @@
 
 const Board = (update) => {
 
-	const container = $('<div class=""></div>');
+	const container = $('<div class="container"></div>');
 	const subHeader = $('<div class="sub-header"></div>');
 
 	const boardFixed = $('<div class="board-fixed"></div>');

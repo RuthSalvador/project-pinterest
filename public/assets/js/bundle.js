@@ -48,28 +48,9 @@ $( _ => {
 
 'use strict';
 
-const getJSON = (url, cb) => {
-
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener('load', () => {
-
-    if (xhr.status !== 200) {
-      return cb(new Error('Error loading JSON from ' + url + '(' + xhr.status + ')'));
-    }
-
-    cb(null, xhr.response);
-  });
-
-  xhr.open('GET', url);
-  xhr.responseType = 'json';
-  xhr.send();
-};
-'use strict';
-
 const Board = (update) => {
 
-	const container = $('<div class=""></div>');
+	const container = $('<div class="container"></div>');
 	const subHeader = $('<div class="sub-header"></div>');
 
 	const boardFixed = $('<div class="board-fixed"></div>');
@@ -152,4 +133,24 @@ const Header = (update) => {
 	header.append(boxInput);
 	header.append(boxIcons);
 	return header;
+};
+
+'use strict';
+
+const getJSON = (url, cb) => {
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+
+    if (xhr.status !== 200) {
+      return cb(new Error('Error loading JSON from ' + url + '(' + xhr.status + ')'));
+    }
+
+    cb(null, xhr.response);
+  });
+
+  xhr.open('GET', url);
+  xhr.responseType = 'json';
+  xhr.send();
 };
