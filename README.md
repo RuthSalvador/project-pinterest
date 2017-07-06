@@ -23,10 +23,10 @@ Este proyecto está constituido por la replica de PINTEREST, la cual es es una p
 ```
 ## Muestra del Proyecto
 + Mobile  
-  ![mobile](project-pinterest/public/assets/img/screenshot/desktop_pinterest.PNG)
+  ![mobile](src/assets/img/screenshot/desktop_pinterest.PNG)
   
  + Desktop
-  ![mobile](project-pinterest/public/assets/img/screenshot/mobile_pinterest.PNG)
+  ![mobile](src/assets/img/screenshot/mobile_pinterest.PNG)
  
  
 
