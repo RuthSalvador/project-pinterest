@@ -26,6 +26,7 @@
   "devDependencies": {
     "browser-sync": "^2.18.12",
     "concat": "^1.0.3",
+    "express": "^4.15.3",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.1",
