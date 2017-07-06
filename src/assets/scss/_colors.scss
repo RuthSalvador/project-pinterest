@@ -3,3 +3,32 @@ $white: rgb(255, 255, 255);
 $gray-light: rgb(239, 239, 239);
 $gray-dark: rgb(181, 181, 181);
 $color-base: rgb(85, 85, 85);
+
+* {
+  color: $color-base;
+}
+
+.btn {
+  border: none;
+  font-weight: bold;
+  padding: 10px 14px;
+  &__follow {
+    background-color: $color-pinterest;
+    color: $white;
+  }
+  &__unfollow {
+    background-color: $gray-light;
+    color: $color-base;
+  }
+}
+
+/*
+.hover-special {
+  background-color: rgba($gray-dark,0);
+  width: 256px !important;
+  height: 100% !important;
+  &:hover {
+    background-color: rgba($gray-dark,0.1);
+
+  }
+}*/

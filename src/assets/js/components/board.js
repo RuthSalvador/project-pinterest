@@ -2,23 +2,25 @@
 
 const Board = (update) => {
 
-	const container = $('<div class="container"></div>');
+	const container = $('<div class=""></div>');
 	const subHeader = $('<div class="sub-header"></div>');
 
 	const boardFixed = $('<div class="board-fixed"></div>');
-	const file = $('<img src="assets/img/send.png" alt="send">');
-	const buttom = $('<button> Seguir Tablero</button>');
+	const divFix 		 = $('<div class="div-fix flex flex__between"></div>');
+	const file 			 = $('<img src="assets/img/send.png" alt="send">');
+	const buttom		 = $('<button class="btn btn__follow border--board"> Seguir Tablero</button>');
 
   const boardHeader = $('<div class="board-header"></div>');
-	let boardName = $('<h1>'+state.board.name+'</h1>');
-	const pins 		= $('<p>'+state.board.counts.pins+' Pines</p>');
-	const followers = $('<p>'+state.board.counts.followers+' Seguidores</p>');
-	let userImage = $('<img class="border--circle" src="'+state.userData.image["60x60"].url+'" alt="userImage">');
+	let boardName			= $('<h1 class="title">'+state.board.name+'</h1>');
+	const pins 				= $('<p class="small"><b>'+state.board.counts.pins+'</b> Pines</p>');
+	const followers 	= $('<p class="small"><b>'+state.board.counts.followers+'</b> Seguidores</p>');
+	let userImage 		= $('<img class="border--circle push-right" src="'+state.userData.image["60x60"].url+'" alt="userImage">');
 
+	container.append(boardFixed);
 	container.append(subHeader);
-	subHeader.append(boardFixed);
-	boardFixed.append(file);
-	boardFixed.append(buttom);
+	boardFixed.append(divFix);
+	divFix.append(file);
+	divFix.append(buttom);
 	subHeader.append(boardHeader);
 	boardHeader.append(boardName);
 	boardHeader.append(pins);
@@ -26,24 +28,28 @@ const Board = (update) => {
 	boardHeader.append(userImage);
 
 	const boardPins = $('<div class="board-pins flex flex__wrap"></div>');
-	let boardCount = state.boardData.length;
+	let boardCount 	= state.boardData.length;
 	for(let i = 0; i < boardCount ; i++){
 
-		const boardContainer = $('<div class="board-container block padding__block"></div>');
-		const pin = $('<div class="pin"></div>');
-		const img = $('<img class="block__pin" src="'+state.boardData[i].image.original.url+'" alt="pin">');
-		const pinNote = $('<h3 class="pin-name">'+state.boardData[i].note+'</h3>');
-		const userContainer = $('<div></div>');
-		let userImage = $('<img class="border--circle" src="'+state.userData.image["60x60"].url+'" alt="userImage">');
-		const userName = $('<p>'+state.boardData[i].creator.first_name+'</p>');
-		let boardName = $('<p>'+state.board.name+'</p>');
+		const boardContainer = $('<div class="board-container block padding__block border--board"></div>');
+		const boardHover 		 = $('<div class="hover-special"></div>');
+		const pin 					 = $('<div class="pin"></div>');
+		const img 					 = $('<img class="block__pin border--board" src="'+state.boardData[i].image.original.url+'" alt="pin">');
+		const pinNote 			 = $('<h5 class="pin-name">'+state.boardData[i].note+'</h5>');
+		const userContainer  = $('<div class="flex flex__center border--board"></div>');
+		let userImage 			 = $('<img class="border--circle header__boxIcon--icons" src="'+state.userData.image["60x60"].url+'" alt="userImage">');
+		const userDetails		 = $('<div></div>');
+		const userName 			 = $('<p class="small--10"><b>'+state.boardData[i].creator.first_name+'</b></p>');
+		let boardName				 = $('<p class="small--10">'+state.board.name+'</p>');
 
 		pin.append(img);
 		pin.append(pinNote);
 		userContainer.append(userImage);
-		userContainer.append(userName);
-		userContainer.append(boardName);
-		boardContainer.append(pin);
+		userContainer.append(userDetails);
+		userDetails.append(userName);
+		userDetails.append(boardName);
+    boardContainer.append(boardHover);
+    boardContainer.append(pin);
 		boardContainer.append(userContainer);
 		boardPins.append(boardContainer);
 		container.append(boardPins);

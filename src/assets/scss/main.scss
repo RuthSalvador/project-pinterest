@@ -8,11 +8,20 @@
 @import "colors";
 @import "flexbox";
 
-.board-fixed {
-  position: fixed;
-  margin: auto;
-}
-
 .wrapper {
   overflow: hidden;
 }
+
+h1 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 14px;
+}
+
+.small {
+  font-size: 12px;
+  &--10 {
+    font-size: 10px;
+  }
+}
+
