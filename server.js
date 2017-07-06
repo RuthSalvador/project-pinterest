@@ -5,8 +5,9 @@ const app = express();
 app.use('/', express.static('public'));
 
 //aquí le decimos al framework desde que puerto
-const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log('Server running on port '+port+'!');
+app.set('port', (process.env.PORT || 5000));
+
+app.listen(app.get('port'), ()=> {
+  console.log('Node app is running on port', app.get('port'));
 });
