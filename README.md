@@ -38,6 +38,6 @@ Este proyecto está constituido por la replica de PINTEREST, la cual es es una p
 
 `Nota`:
 
-- Este proyecto está subido al HEROKU [aquí](https://project-pinterest.herokuapp.com/).<br/>
+- Este proyecto está subido al HEROKU [aquí](https://project-pinterest-lab.herokuapp.com/).<br/>
 - Este proyecto está subido al GH-PAGES [aquí](https://ruthsalvador.github.io/project-pinterest/public/index.html).
 
