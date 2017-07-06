@@ -1,8 +1,20 @@
 {
   "name": "project-pinterest",
   "version": "1.0.0",
-  "description": "Proyecto Pinterest para Laboratoria",
-  "main": "server.js",
+  "description": "Este proyecto está constituido por la replica de PINTEREST, la cual es es una plataforma para compartir imágenes que permite a los usuarios crear y administrar, en tableros personales temáticos, colecciones de imágenes como eventos, intereses, hobbies y mucho más.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.18.12",
+    "concat": "^1.0.3",
+    "express": "^4.15.3",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -11,28 +23,10 @@
     "type": "git",
     "url": "git+https://github.com/RuthSalvador/project-pinterest.git"
   },
-  "keywords": [
-    "gulps",
-    "sass",
-    "JavaScript",
-    "npm"
-  ],
-  "author": "Ruth Salvador, Miriam Mendoza, Mitchell Rodriguez",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RuthSalvador/project-pinterest/issues"
   },
-  "homepage": "https://github.com/RuthSalvador/project-pinterest#readme",
-  "devDependencies": {
-    "browser-sync": "^2.18.12",
-    "gulp": "^3.9.1",
-    "gulp-browserify": "^0.5.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^3.0.0"
-  },
-  "dependencies": {
-    "express": "^4.15.3"
-  }
+  "homepage": "https://github.com/RuthSalvador/project-pinterest#readme"
 }
